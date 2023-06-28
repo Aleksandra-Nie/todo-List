@@ -1,0 +1,6 @@
+.container {
+    margin: 0 auto;
+    max-width: 900px;
+    word-break: break-word;
+    padding: 20px;
+}

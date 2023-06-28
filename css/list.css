@@ -20,7 +20,7 @@
 }
 
 .list__buttonTask--toggleDone:hover {
-    background-color: hsl(120, 61%, 34%);
+    background-color: hsl(120, 61%, 39%);
 }
 
 .list__buttonTask--toggleDone:active {

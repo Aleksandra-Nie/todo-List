@@ -3,6 +3,8 @@
 
   ];
 
+  let hideDoneTask = false;
+
   const addNewTask = (newTaskContent) => {
     tasks.push({
       content: newTaskContent,
@@ -21,6 +23,10 @@
     render();
   };
 
+  const toggleHideDoneTask = () => {
+    hideDoneTask = !hideDoneTask;
+    render();
+  };
 
   const bindEvents = () => {
     const removeButtons = document.querySelectorAll(".js-remove");
@@ -39,28 +45,79 @@
     });
   };
 
-  const render = () => {
+  const resetButton = () => {
+    const resetElements = document.querySelector(".js-reset");
+
+    if (!tasks.length) {
+      resetElements.innerHTML = "";
+      return;
+    }
+
+    resetElements.innerHTML = `
+    <button type="reset" class="button button--reset" onClick = "reset()">Usuń wszystkie</button>
+    `;
+  };
+
+  function reset() {
+    document.getElementById("myForm").reset();
+  }
+
+  const renderButtons = () => {
+    const buttonElements = document.querySelector(".js-buttons");
+
+    if (!tasks.length) {
+      buttonElements.innerHTML = "";
+      return;
+    }
+
+    buttonElements.innerHTML = `
+        <button 
+            class="button js-toggleHideDoneTasks"
+            >
+            ${hideDoneTask ? "Wyświetl" : "Ukryj"} ukończone ✓
+        </button>
+    `;
+  };
+
+  const bindButtonEvents = () => {
+    const toggleHideDoneTasksButton = document.querySelector(".js-toggleHideDoneTasks");
+
+    if (toggleHideDoneTasksButton) {
+      toggleHideDoneTasksButton.addEventListener("click", toggleHideDoneTask);
+    }
+  };
+
+  const renderTasks = () => {
     let htmlString = "";
 
     for (const task of tasks) {
       htmlString += `
-        <li class="list__item">
-          <button class="list__buttonTask list__buttonTask--toggleDone js-done">
-            ${task.done ? " ✓ " : ""}
-          </button>
-          <span class="list__content ${task.done ? "list__content--done" : ""}">
-            ${task.content}
-          </span>
-          <button class="list__buttonTask list__buttonTask--remove js-remove">
-            🗑
-          </button>
+        <li class="list__item${task.done && hideDoneTask ? " list__item--hidden" : ""
+        } js-tasks">
+        <button class="list__buttonTask list__buttonTask--toggleDone js-done">
+          ${task.done ? " ✓ " : ""}
+        </button>
+        <span class="list__content ${task.done ? "list__content--done" : ""}">
+          ${task.content}
+        </span>
+        <button class="list__buttonTask list__buttonTask--remove js-remove">
+          🗑
+        </button>
         </li>
       `;
     }
 
     document.querySelector(".js-tasks").innerHTML = htmlString;
 
+  };
+
+  render = () => {
+    renderTasks();
+    renderButtons();
+
     bindEvents();
+    bindButtonEvents();
+    resetButton();
   };
 
   const onFormSubmit = (event) => {
@@ -72,9 +129,17 @@
     if (newTaskContent !== "") {
       addNewTask(newTaskContent);
     }
-
     newTaskElement.value = "";
     newTaskElement.focus();
+  };
+
+  const resetForm = () => {
+    const tasks = document.querySelector(".js-tasks");
+    const buttonElements = document.querySelector(".js-buttons");
+    const resetElements = document.querySelector(".js-reset");
+    tasks.innerHTML = "";
+    buttonElements.innerHTML = "";
+    resetElements.innerHTML = ""
   };
 
   const init = () => {
@@ -83,6 +148,7 @@
     const form = document.querySelector(".js-form");
 
     form.addEventListener("submit", onFormSubmit);
+    form.addEventListener("reset", resetForm);
   };
 
   init();

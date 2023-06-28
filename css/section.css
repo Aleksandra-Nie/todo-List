@@ -11,6 +11,10 @@
     border-bottom: 1px solid #ddd;
 }
 
+.section__header--second {
+    border-bottom: none;
+}
+
 .section__body {
     padding: 20px;
 }
@@ -19,4 +23,10 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+.section__container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.3fr;
+    border-bottom: 1px solid #ddd;
 }

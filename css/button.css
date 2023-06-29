@@ -35,5 +35,10 @@
 .button--reset {
     display: grid;
     margin: 20px auto 20px;
-    padding: 7px;
+    border: none;
+    padding: 10px;
+    color: white;
+    background-color: hsl(180, 100%, 25%);
+    cursor: pointer;
+    text-align: center;
 }

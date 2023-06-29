@@ -70,13 +70,17 @@
     }
 
     resetElements.innerHTML = `
-    <button type="reset" class="button button--reset" onClick = "reset()">Usuń wszystkie</button>
+    <button type="reset" class="button button--reset js-reset">Usuń wszystkie</button>
     `;
   };
 
-  function reset() {
-    document.getElementById("myForm").reset();
-  }
+  const bindResetEvent = () => {
+    const resetElements = document.querySelector(".js-reset");
+
+    if (resetElements) {
+      resetElements.addEventListener("click", resetForm);
+    }
+  };
 
   const renderButtons = () => {
     const buttonElements = document.querySelector(".js-buttons");
@@ -90,7 +94,7 @@
         <button 
             class="button js-toggleHideDoneTasks"
             >
-            ${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone ✓
+            ${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone
         </button>
         <button class="button js-markAllCompleted"
         ${tasks.every(({ done }) => done) ? "disabled" : ""}
@@ -145,6 +149,7 @@
     bindEvents();
     bindButtonEvents();
     resetButton();
+    bindResetEvent();
   };
 
   const onFormSubmit = (event) => {

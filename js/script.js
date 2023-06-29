@@ -35,6 +35,15 @@
     render();
   };
 
+  const markAllTasksCompleted = () => {
+    tasks = tasks.map((task) => ({
+      ...task,
+      done: true,
+    }));
+
+    render();
+  };
+
   const bindEvents = () => {
     const removeButtons = document.querySelectorAll(".js-remove");
 
@@ -83,7 +92,10 @@
             >
             ${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone ✓
         </button>
-        <button class="button js-markAllCompleted">Ukończ wszystkie
+        <button class="button js-markAllCompleted"
+        ${tasks.every(({ done }) => done) ? "disabled" : ""}
+        >
+        Ukończ wszystkie
         </button>
     `;
   };
@@ -93,6 +105,12 @@
 
     if (toggleHideDoneTasksButton) {
       toggleHideDoneTasksButton.addEventListener("click", toggleHideDoneTask);
+    }
+
+    const markAllCompletedTasksButton = document.querySelector(".js-markAllCompleted");
+
+    if (markAllCompletedTasksButton) {
+      markAllCompletedTasksButton.addEventListener("click", markAllTasksCompleted);
     }
   };
 

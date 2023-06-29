@@ -26,7 +26,10 @@
 
 .button:hover {
     color: rgb(60, 167, 167);
-    transform: scale(1.1);
+}
+
+.button:disabled {
+    color: #ccc;
 }
 
 .button--reset {

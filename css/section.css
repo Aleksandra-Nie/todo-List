@@ -27,6 +27,12 @@
 
 .section__container {
     display: grid;
-    grid-template-columns: 2fr 1fr 1.3fr;
+    grid-template-columns: 2fr auto;
     border-bottom: 1px solid #ddd;
+}
+
+@media (max-width: 767px) {
+    .section__container {
+        grid-template-columns: 1fr;
+    }
 }

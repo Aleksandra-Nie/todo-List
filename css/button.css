@@ -1,6 +1,9 @@
 .buttons {
     display: grid;
-    margin: 20px;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+    padding: 20px;
+    margin: 0;
 }
 
 @media (max-width: 767px) {
@@ -9,21 +12,20 @@
     }
 
     .buttons {
-        margin: 0 auto 20px;
+        grid-template-columns: 1fr;
     }
 }
 
 .button {
     border: none;
-    box-shadow: rgb(211, 211, 211) 0px 0px 0px 1px;
-    padding: 7px;
-    color: whitesmoke;
-    background-color: teal;
+    padding: 0;
+    color: teal;
+    background-color: white;
     cursor: pointer;
 }
 
 .button:hover {
-    background-color: rgb(60, 167, 167);
+    color: rgb(60, 167, 167);
     transform: scale(1.1);
 }
 

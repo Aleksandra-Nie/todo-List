@@ -24,7 +24,7 @@
 
   const toggleTaskDone = (taskIndex) => {
     tasks = tasks.map((task, index) =>
-      index === taskIndex ? { ...task, done: !task.done } : { ...task }
+      index === taskIndex ? { ...task, done: !task.done } : task
     );
 
     render();
@@ -81,7 +81,9 @@
         <button 
             class="button js-toggleHideDoneTasks"
             >
-            ${hideDoneTask ? "Wyświetl" : "Ukryj"} ukończone ✓
+            ${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone ✓
+        </button>
+        <button class="button js-markAllCompleted">Ukończ wszystkie
         </button>
     `;
   };

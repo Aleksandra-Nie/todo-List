@@ -58,9 +58,13 @@
             </div>
         </section>
 
-        <footer class="footer">Copyright © 2023. All right reserved.
+        <footer class="footer">Copyright © <span class="thisyear"></span>. All right reserved.
         </footer>
     </main>
 </body>
 
 </html>
+<script>
+    var thisYear = new Date().getFullYear(); 
+    $('.thisyear').text(thisYear);
+</script>

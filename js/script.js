@@ -22,6 +22,13 @@
     render();
   };
 
+  const removeAllTasks = (taskIndex) => {
+    tasks = [
+      ...tasks.slice(0, taskIndex)
+    ]
+    render();
+  };
+
   const toggleTaskDone = (taskIndex) => {
     tasks = tasks.map((task, index) =>
       index === taskIndex ? { ...task, done: !task.done } : task
@@ -78,7 +85,7 @@
     const resetElements = document.querySelector(".js-reset");
 
     if (resetElements) {
-      resetElements.addEventListener("click", resetForm);
+      resetElements.addEventListener("click", removeAllTasks);
     }
   };
 
@@ -169,7 +176,6 @@
     const tasks = document.querySelector(".js-tasks");
     const buttonElements = document.querySelector(".js-buttons");
     const resetElements = document.querySelector(".js-reset");
-    tasks.innerHTML = "";
     buttonElements.innerHTML = "";
     resetElements.innerHTML = ""
   };

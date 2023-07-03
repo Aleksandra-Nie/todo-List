@@ -22,6 +22,7 @@
     color: teal;
     background-color: white;
     cursor: pointer;
+    transition: 0.5s;
 }
 
 .button:hover {

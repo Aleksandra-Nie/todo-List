@@ -22,10 +22,8 @@
     render();
   };
 
-  const removeAllTasks = (taskIndex) => {
-    tasks = [
-      ...tasks.slice(0, taskIndex)
-    ]
+  const removeAllTasks = () => {
+    tasks = [];
     render();
   };
 

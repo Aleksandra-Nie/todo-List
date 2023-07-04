@@ -36,7 +36,3 @@
         grid-template-columns: 1fr;
     }
 }
-
-.section__reset {
-    display: grid;
-}

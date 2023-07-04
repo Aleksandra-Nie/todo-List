@@ -77,18 +77,15 @@
     }
 
     buttonElements.innerHTML = `
-        <button 
-            class="button js-toggleHideDoneTasks"
-            >
-            ${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone
+        <button class="button js-toggleHideDoneTasks">
+        ${hideDoneTask ? "Pokaż" : "Ukryj"} ukończone
         </button>
         <button class="button js-markAllCompleted"
-        ${tasks.every(({ done }) => done) ? "disabled" : ""}
-        >
+        ${tasks.every(({ done }) => done) ? "disabled" : ""}>
         Ukończ wszystkie
         </button>
         <button type="reset" class="button button--reset js-reset">Usuń wszystkie</button>
-    `;
+      `;
   };
 
   const bindButtonEvents = () => {
@@ -139,7 +136,6 @@
   render = () => {
     renderTasks();
     renderButtons();
-
     bindEvents();
     bindButtonEvents();
   };

@@ -68,27 +68,6 @@
     });
   };
 
-  const resetButton = () => {
-    const resetElements = document.querySelector(".js-reset");
-
-    if (!tasks.length) {
-      resetElements.innerHTML = "";
-      return;
-    }
-
-    resetElements.innerHTML = `
-    <button type="reset" class="button button--reset js-reset">Usuń wszystkie</button>
-    `;
-  };
-
-  const bindResetEvent = () => {
-    const resetElements = document.querySelector(".js-reset");
-
-    if (resetElements) {
-      resetElements.addEventListener("click", removeAllTasks);
-    }
-  };
-
   const renderButtons = () => {
     const buttonElements = document.querySelector(".js-buttons");
 
@@ -108,6 +87,7 @@
         >
         Ukończ wszystkie
         </button>
+        <button type="reset" class="button button--reset js-reset">Usuń wszystkie</button>
     `;
   };
 
@@ -123,6 +103,13 @@
     if (markAllCompletedTasksButton) {
       markAllCompletedTasksButton.addEventListener("click", markAllTasksCompleted);
     }
+
+    const resetElements = document.querySelector(".js-reset");
+
+    if (resetElements) {
+      resetElements.addEventListener("click", removeAllTasks);
+    }
+
   };
 
   const renderTasks = () => {
@@ -155,8 +142,6 @@
 
     bindEvents();
     bindButtonEvents();
-    resetButton();
-    bindResetEvent();
   };
 
   const onFormSubmit = (event) => {
@@ -173,7 +158,7 @@
   };
 
   const resetForm = () => {
-    const tasks = document.querySelector(".js-tasks");
+
     const buttonElements = document.querySelector(".js-buttons");
     const resetElements = document.querySelector(".js-reset");
     buttonElements.innerHTML = "";

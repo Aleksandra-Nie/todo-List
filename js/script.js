@@ -15,10 +15,8 @@
   };
 
   const removeTask = (taskIndex) => {
-    tasks = [
-      ...tasks.slice(0, taskIndex),
-      ...tasks.slice(taskIndex + 1),
-    ]
+    tasks = tasks.filter((task, index) => index !== taskIndex
+    );
     render();
   };
 

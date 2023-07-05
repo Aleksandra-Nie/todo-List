@@ -17,9 +17,9 @@
     border: none;
     padding: 0;
     color: teal;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
-    transition: 0.5s;
+    transition: color 0.5s;
 }
 
 .button:hover {

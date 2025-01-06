@@ -4,7 +4,7 @@ In the following list you enter one by one all the tasks that appear and are add
 
 ![todolist](images/Animation_Todolist_small.gif)
 ## Demo
-https://aleksandra-nie.github.io/To-do-list-v3/
+https://aleksandra-nie.github.io/todo-List/
 ## Tools
 - HTML
 - CSS
